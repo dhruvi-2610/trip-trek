@@ -1,0 +1,33 @@
+<div class="input-container">
+    <h1>Trip Trek</h1>
+    <div class="input-group">
+
+    </div>
+    <input [(ngModel)]="startTrip" placeholder="Start Point" />
+    <input [(ngModel)]="endTrip" placeholder="End Point" />
+    <button (click)="addTrip()">Add Trip</button>
+    <button (click)="clearTrips()">Clear</button>
+</div>
+  
+  <div class="trip-container">
+    <div
+      class="trip"
+      *ngFor="let trip of trips; let i = index"
+      [ngClass]="'level-' + getLevel(i)"
+    >
+
+    <div class="segment">
+         <div class="dot" [ngClass]="{ continued: isContinued(i) }"></div>
+      <div
+        class="line"
+        [ngClass]="{ arrow: !isContinued(i), continued: isContinued(i) }"
+      ></div>
+    </div>
+     
+      <div class="label">
+        {{ trip.start.slice(0, 3).toUpperCase() }} -
+        {{ trip.end.slice(0, 3).toUpperCase() }}
+      </div>
+    </div>
+  </div>
+  
